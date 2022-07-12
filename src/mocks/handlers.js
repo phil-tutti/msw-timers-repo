@@ -1,0 +1,20 @@
+import { rest } from 'msw'
+
+export const handlers = [
+  rest.get("/logo", (req, res, ctx) => {
+    return res(ctx.body("hehe"));
+  }),
+  rest.post('/login', (req, res, ctx) => {
+    const { username } = req.body
+    console.log(req.url.hostname);
+
+    return res(
+      ctx.json({
+        id: 'f79e82e8-c34a-4dc7-a49e-9fadc0979fda',
+        username,
+        firstName: 'John',
+        lastName: 'Maverick',
+      })
+    )
+  }),
+]
